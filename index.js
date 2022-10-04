@@ -50,7 +50,22 @@ app.get("/", async function (req, res) {
         referrerpolicy="no-referrer"
       />
       <style>
+      media @print {
+        body: {
+          font-size: "16px";
+          color: "lightgrey";
+        }
       
+        .no-break-inside {
+          // apply this class to every component that shouldn't be cut off between to pages of your PDF
+          break-inside: "avoid";
+        }
+      
+        .break-before {
+          // apply this class to every component that should always display on next page
+          break-before: "always";
+        }
+      }
       .react-grid-layout {
         position: relative;
         transition: height 200ms ease;
@@ -134,7 +149,7 @@ app.get("/", async function (req, res) {
             { id: 1, name: "Item One" },
             { id: 2, name: "Item Two" },
             { id: 3, name: "Item Three" },
-            { id: 4, name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." },
+            { id: 4, name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.asd asd asdasdas asdsad Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." },
             { id: 5, name: "Item Five" },
             { id: 6, name: "Item Six" },
             { id: 7, name: "Item Seven" },
@@ -145,31 +160,30 @@ app.get("/", async function (req, res) {
             { i: "1", x: 0, y: 0, w: 5, h: 2 },
             { i: "2", x: 5, y: 0, w: 3, h: 2 },
             { i: "3", x: 8, y: 0, w: 3, h: 2 },
-            { i: "4", x: 0, y: 3, w: 5, h: 2 },
+            { i: "4", x: 0, y: 3, w: 5, h: 3 },
             { i: "5", x: 5, y: 3, w: 3, h: 2 },
             { i: "6", x: 8, y: 3, w: 3, h: 2 },
             { i: "7", x: 0, y: 6, w: 5, h: 2 },
             { i: "8", x: 5, y: 6, w: 3, h: 2 },
             { i: "9", x: 8, y: 6, w: 3, h: 2 },
           ];
-      
+     
           return (
             <ResponsiveReactGridLayout
               layouts={{ lg: layout }}
               measureBeforeMount={true}
-              className="layout"
-              rowHeight={this.props.rowHeight}
+              className="layout no-break-inside"
               isDragable={true}
               isResizable={true}
               onDrag={this.onDragging}
               onDragStop={this.onMoveCard}
               onResizeStop={this.onResizeCard}
-              margin={[20, 20]}
+              margin={[0, 0]}
             >
               {gridItems.map((item, i) => {
                 return (
-                  <div key={item.id} className="grid-item parent">
-                    <p className="wrapper">{item.name}</p>
+                  <div key={item.id} className="grid-item no-break-inside">
+                    <p key={item.id} className="no-break-inside" >{item.name}</p>
                   </div>
                 );
               })}
@@ -192,13 +206,15 @@ app.get("/", async function (req, res) {
 
   // Downlaod the PDF
   const pdf = await page.pdf({
-    path: "./shawon.pdf",
+    path: "./result.pdf",
     margin: {
-      bottom: 10, // minimum required for footer msg to display
-      top: 10,
+      bottom: "15px", // minimum required for footer msg to display
+      top: "15px",
+      left: "15px",
+      right: "15px",
     },
-    printBackground: true,
     format: "A4",
+    printBackground: true,
   });
 
   // Close the browser instance
