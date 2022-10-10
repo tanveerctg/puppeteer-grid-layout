@@ -22,11 +22,8 @@ app.get("/", async function (req, res) {
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>React CDN</title>
-
-<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-
- 
+      <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+      <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
       <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
       <script src="https://cdn.tailwindcss.com"></script>
       <script
@@ -250,68 +247,293 @@ app.get("/", async function (req, res) {
     <body>
       <div id="root"></div>
       <script type="text/babel">
+
+      
       const ResponsiveReactGridLayout = ReactGridLayout.WidthProvider(
         ReactGridLayout.Responsive
       );
+      const defaultProps = {
+        className: "layout",
+        rowHeight: 30,
+        onLayoutChange: function () {},
+        cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 },
+        resizeHandles: ["se"],
+      };
       
-      class Grid extends React.Component {
-        render() {
-          const gridItems = [
-            { id: 1, name: "Item One" },
-            { id: 2, name: "Item Two" },
-            { id: 3, name: "Item Three" },
-            { id: 4, name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.asd asd asdasdas asdsad Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." },
-            { id: 5, name: "Item Five" },
-            { id: 6, name: "Item Six" },
-            { id: 7, name: "Item Seven" },
-            { id: 8, name: "Item Eight" },
-            { id: 9, name: "Item Nine" },
-          ];
-          const layout = [
-            { i: "1", x: 10, y: 0, w: 2, h: 2 },
-            { i: "2", x: 10, y: 3, w: 2, h: 2 },
-            { i: "3", x: 10, y: 6, w: 2, h: 2 },
-            { i: "4", x: 10, y: 9, w: 2, h: 2 },
-            { i: "5", x: 10, y: 12, w: 2, h: 2 },
-            { i: "6", x: 10, y: 15, w: 2, h: 2 },
-            { i: "7", x: 10, y: 18, w: 2, h: 2 },
-            { i: "8", x: 10, y: 21, w: 2, h: 2 },
-            { i: "9", x: 10, y: 24, w: 2, h: 2 },
-          ];
      
-          return (
-            <ResponsiveReactGridLayout
-              layouts={{ lg: layout }}
-              measureBeforeMount={false}
-              isDragable={true}
-              isResizable={true}
-              onDrag={this.onDragging}
-              onDragStop={this.onMoveCard}
-              onResizeStop={this.onResizeCard}
-              margin={[10, 10]}
-              containerPadding={[0,0]}
-            >
-              {gridItems.map((item, i) => {
-                return (
-                  <div key={item.id} className="no-break-inside bg-red-500 rounded-md p-2 parent" style={{padding:"10px"}}>
-                  <p class="text-[#067c7c] font-semibold uppercase">Unique views</p>
-                   <div class="parent" style={{marginTop:i==7?"10px":0}}>
-                      <div class="flex justify-between space-x-4 wrapper">
-                        <h3 class="text-base font-semibold">icon src</h3>
-                        <h3 class="text-3xl">987 views</h3>
-                      </div>
-                   </div>
-                  </div>
-                );
-              })}
-            </ResponsiveReactGridLayout>
+      
+      const App = () => {
+        function generateLayout() {
+          return [
+            { w: 2, h: 3, x: 10, y: 0, i: "0", moved: false, static: false },
+            { w: 2, h: 3, x: 10, y: 3, i: "1", moved: false, static: false },
+            { w: 2, h: 3, x: 10, y: 6, i: "2", moved: false, static: false },
+            { w: 2, h: 3, x: 10, y: 12, i: "3", moved: false, static: false },
+            {
+              w: 2,
+              h: 3,
+              x: 10,
+              y: 15,
+              i: "4",
+              moved: false,
+              static: false,
+              isDraggable: true,
+            },
+            {
+              w: 2,
+              h: 3,
+              x: 10,
+              y: 18,
+              i: "5",
+              moved: false,
+              static: false,
+              isDraggable: true,
+            },
+            {
+              w: 2,
+              h: 3,
+              x: 10,
+              y: 21,
+              i: "6",
+              moved: false,
+              static: false,
+              isDraggable: true,
+            },
+            {
+              w: 2,
+              h: 3,
+              x: 10,
+              y: 24,
+              i: "7",
+              moved: false,
+              static: false,
+              isDraggable: true,
+            },
+            {
+              w: 2,
+              h: 3,
+              x: 10,
+              y: 27,
+              i: "8",
+              moved: false,
+              static: false,
+              isDraggable: true,
+            },
+            {
+              w: 2,
+              h: 3,
+              x: 10,
+              y: 30,
+              i: "9",
+              moved: false,
+              static: false,
+              isDraggable: true,
+            },
+            {
+              w: 2,
+              h: 3,
+              x: 10,
+              y: 33,
+              i: "10",
+              moved: false,
+              static: false,
+              isDraggable: true,
+            },
+            {
+              w: 2,
+              h: 3,
+              x: 10,
+              y: 36,
+              i: "11",
+              moved: false,
+              static: false,
+              isDraggable: true,
+            },
+            {
+              w: 2,
+              h: 3,
+              x: 10,
+              y: 39,
+              i: "12",
+              moved: false,
+              static: false,
+              isDraggable: true,
+            },
+            {
+              w: 2,
+              h: 3,
+              x: 10,
+              y: 42,
+              i: "13",
+              moved: false,
+              static: false,
+              isDraggable: true,
+            },
+            {
+              w: 2,
+              h: 3,
+              x: 10,
+              y: 45,
+              i: "14",
+              moved: false,
+              static: false,
+              isDraggable: true,
+            },
+          ];
         
-          );
+          return [1, 2, 3, 4].map(function (item, i) {
+            var y = Math.ceil(Math.random() * 4) + 1;
+            return {
+              x: Math.round(Math.random() * 5) * 2,
+              y: Math.floor(i / 6) * y,
+              w: 2,
+              h: y,
+              i: i.toString(),
+              static: Math.random() < 0.05,
+            };
+          });
         }
-      }
+        const [state, setState] = React.useState({
+          currentBreakpoint: "lg",
+          compactType: "vertical",
+          mounted: false,
+          layouts: { lg: generateLayout() },
+        });
       
-      ReactDOM.render(<Grid />, document.querySelector("#root"));
+        React.useEffect(() => {
+          setState((prev) => ({ ...prev, mounted: true }));
+        }, []);
       
+        const generateDOM = () => {
+          return state.layouts.lg.map(function (l, i) {
+            return (
+              <div
+                key={l.i}
+                className={
+                  l.static
+                    ? "static bg-red-500 rounded-md p-2"
+                    : "bg-red-500 rounded-md p-2"
+                }
+              >
+                {/* {l.static ? (
+                  <span
+                    className="text"
+                    title="This item is static and cannot be removed or resized."
+                  >
+                    Static - {i}
+                  </span>
+                ) : (
+                  <span className="text">{i}</span>
+                )} */}
+      
+                <p className="text-[#067c7c] font-semibold uppercase">Unique views</p>
+      
+                <div className="flex justify-between space-x-4 ">
+                  <h3 className="text-base font-semibold">icon src</h3>
+                  <h3 className="text-3xl">987 views</h3>
+                </div>
+              </div>
+            );
+          });
+        };
+      
+        const onBreakpointChange = (breakpoint) => {
+          setState((prev) => ({
+            ...prev,
+            currentBreakpoint: breakpoint,
+          }));
+        };
+      
+        const onCompactTypeChange = () => {
+          const { compactType: oldCompactType } = state;
+          const compactType =
+            oldCompactType === "horizontal"
+              ? "vertical"
+              : oldCompactType === "vertical"
+              ? null
+              : "horizontal";
+          setState((prev) => ({ ...prev, compactType }));
+        };
+        React.useEffect(() => {
+          console.log({ lg: state.layouts.lg });
+        }, [state.layouts.lg]);
+      
+        const onLayoutChange = (layout, layouts) => {
+          console.log({ layout, layouts });
+      
+          const updatedLayout = {
+            layouts: { lg: layout },
+          };
+          setState((prev) => ({
+            ...prev,
+            ...updatedLayout,
+          }));
+        };
+        const onDragStop = (layout, layouts) => {
+          // const updatedLayout = {
+          //   layouts: { lg: layout },
+          // };
+          // console.log({ layouts });
+          // setState((prev) => ({
+          //   ...prev,
+          //   updatedLayout,
+          // }));
+        };
+        const onResizeStop = (layout, layouts) => {
+          // const updatedLayout = {
+          //   layouts: { lg: layout },
+          // };
+          // setState((prev) => ({
+          //   ...prev,
+          //   updatedLayout,
+          // }));
+        };
+      
+        const onNewLayout = () => {
+          setState((prev) => ({
+            ...prev,
+            layouts: { lg: generateLayout() },
+          }));
+        };
+      
+        const onDrop = (layout, layoutItem, _event) => {
+          // setState((prev) => ({
+          //   ...prev,
+          //   layouts: {
+          //     lg: layout,
+          //   },
+          // }));
+        };
+      
+        return (
+      
+          
+            <div style={{ background: "red", height: "1122.519685px" }}>
+              <ResponsiveReactGridLayout
+                {...defaultProps}
+                layouts={state.layouts}
+                onBreakpointChange={onBreakpointChange}
+                onLayoutChange={onLayoutChange}
+                onDragStop={onDragStop}
+                onResizeStop={onResizeStop}
+                onDrop={onDrop}
+                // WidthProvider option
+                measureBeforeMount={false}
+            
+                useCSSTransforms={state.mounted}
+                compactType={state.compactType}
+                preventCollision={!state.compactType}
+                isDroppable={true}           
+                margin={[10, 10]}
+              >
+                {generateDOM()}
+              </ResponsiveReactGridLayout>
+            </div>
+       
+        );
+      };
+      
+      ReactDOM.render(<App />, document.querySelector("#root"));
       
       </script>
     </body>
