@@ -241,7 +241,10 @@ app.get("/", async function (req, res) {
         bottom: 0;
         transform: rotate(45deg);
       }
-      
+      thead {
+        display: table-header-group;
+        break-inside: avoid;
+      }
       </style>
     </head>
     <body>
@@ -259,127 +262,10 @@ app.get("/", async function (req, res) {
         cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 },
         resizeHandles: ["se"],
       };
-      
-     
-      
+          
       const App = () => {
         function generateLayout() {
-          return [
-            { w: 2, h: 3, x: 10, y: 0, i: "0", moved: false, static: false },
-            { w: 2, h: 3, x: 10, y: 3, i: "1", moved: false, static: false },
-            { w: 2, h: 3, x: 10, y: 6, i: "2", moved: false, static: false },
-            { w: 2, h: 3, x: 10, y: 12, i: "3", moved: false, static: false },
-            {
-              w: 2,
-              h: 3,
-              x: 10,
-              y: 15,
-              i: "4",
-              moved: false,
-              static: false,
-              isDraggable: true,
-            },
-            {
-              w: 2,
-              h: 3,
-              x: 10,
-              y: 18,
-              i: "5",
-              moved: false,
-              static: false,
-              isDraggable: true,
-            },
-            {
-              w: 2,
-              h: 3,
-              x: 10,
-              y: 21,
-              i: "6",
-              moved: false,
-              static: false,
-              isDraggable: true,
-            },
-            {
-              w: 2,
-              h: 3,
-              x: 10,
-              y: 24,
-              i: "7",
-              moved: false,
-              static: false,
-              isDraggable: true,
-            },
-            {
-              w: 2,
-              h: 3,
-              x: 10,
-              y: 27,
-              i: "8",
-              moved: false,
-              static: false,
-              isDraggable: true,
-            },
-            {
-              w: 2,
-              h: 3,
-              x: 10,
-              y: 30,
-              i: "9",
-              moved: false,
-              static: false,
-              isDraggable: true,
-            },
-            {
-              w: 2,
-              h: 3,
-              x: 10,
-              y: 33,
-              i: "10",
-              moved: false,
-              static: false,
-              isDraggable: true,
-            },
-            {
-              w: 2,
-              h: 3,
-              x: 10,
-              y: 36,
-              i: "11",
-              moved: false,
-              static: false,
-              isDraggable: true,
-            },
-            {
-              w: 2,
-              h: 3,
-              x: 10,
-              y: 39,
-              i: "12",
-              moved: false,
-              static: false,
-              isDraggable: true,
-            },
-            {
-              w: 2,
-              h: 3,
-              x: 10,
-              y: 42,
-              i: "13",
-              moved: false,
-              static: false,
-              isDraggable: true,
-            },
-            {
-              w: 2,
-              h: 3,
-              x: 10,
-              y: 45,
-              i: "14",
-              moved: false,
-              static: false,
-              isDraggable: true,
-            },
-          ];
+          return[{"w":2,"h":14,"x":0,"y":0,"i":"0","moved":false,"static":false},{"w":2,"h":15,"x":4,"y":0,"i":"1","moved":false,"static":false},{"w":2,"h":17,"x":4,"y":15,"i":"2","moved":false,"static":false},{"w":2,"h":3,"x":4,"y":32,"i":"3","moved":false,"static":false},{"w":2,"x":4,"y":35,"h":3,"i":"4","moved":false,"static":false,"isDraggable":true},{"w":2,"h":3,"x":4,"y":38,"i":"5","moved":false,"static":false,"isDraggable":true},{"w":2,"h":3,"x":4,"y":41,"i":"6","moved":false,"static":false,"isDraggable":true},{"w":2,"h":3,"x":4,"y":44,"i":"7","moved":false,"static":false,"isDraggable":true},{"w":2,"h":3,"x":4,"y":47,"i":"8","moved":false,"static":false,"isDraggable":true},{"w":2,"h":3,"x":4,"y":50,"i":"9","moved":false,"static":false,"isDraggable":true},{"w":2,"h":3,"x":4,"y":53,"i":"10","moved":false,"static":false,"isDraggable":true},{"w":2,"h":3,"x":4,"y":56,"i":"11","moved":false,"static":false,"isDraggable":true},{"w":2,"h":3,"x":4,"y":59,"i":"12","moved":false,"static":false,"isDraggable":true},{"w":2,"h":3,"x":4,"y":62,"i":"13","moved":false,"static":false,"isDraggable":true},{"w":2,"h":3,"x":4,"y":65,"i":"14","moved":false,"static":false,"isDraggable":true},{"w":4,"x":0,"y":14,"i":"15","moved":false,"static":false,"isDraggable":true},{"w":4,"x":0,"y":14,"i":"15","moved":false,"static":false,"isDraggable":true}]
         
           return [1, 2, 3, 4].map(function (item, i) {
             var y = Math.ceil(Math.random() * 4) + 1;
@@ -406,6 +292,404 @@ app.get("/", async function (req, res) {
       
         const generateDOM = () => {
           return state.layouts.lg.map(function (l, i) {
+
+
+            if(l.i=="4"){
+
+              return <div
+              key={l.i}>  <p className="text-[#067c7c] font-semibold uppercase drag-handle" style={{padding:"10px"}}>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of type
+              and scrambled it to make a type specimen book. It has survived not
+              only five centuries, but also the leap into electronic typesetting,
+              remaining essentially unchanged. It was popularised in the 1960s
+              with the release of Letraset sheets containing Lorem Ipsum passages,
+              and more recently with desktop publishing software like Aldus
+              PageMaker including versions of Lorem Ipsum.
+            </p>
+            </div>
+            }
+
+            if (l.i == "15") {
+              return (
+                <div class="section" key={l.i}>
+                  <div class="text-2xl font-semibold border-b-2 border-red-500 pb-2 mb-3">
+                    Key performing pages
+                  </div>
+                  <div class="overflow-x-auto relative shadow-sm sm:rounded-lg">
+                    <table class="w-full text-sm text-left">
+                      <thead class="text-sm text-[#333] bg-[#f8f5f2]">
+                        <tr>
+                          <th scope="col" class="py-3 px-6">
+                            Product name
+                          </th>
+                          <th scope="col" class="py-3 px-6">
+                            Color
+                          </th>
+                          <th scope="col" class="py-3 px-6">
+                            Category
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Microsoft Surface Pro</td>
+                          <td class="py-4 px-6">White</td>
+                          <td class="py-4 px-6">Laptop PC</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Microsoft Surface Pro</td>
+                          <td class="py-4 px-6">White</td>
+                          <td class="py-4 px-6">Laptop PC</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Microsoft Surface Pro</td>
+                          <td class="py-4 px-6">White</td>
+                          <td class="py-4 px-6">Laptop PC</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Microsoft Surface Pro</td>
+                          <td class="py-4 px-6">White</td>
+                          <td class="py-4 px-6">Laptop PC</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Microsoft Surface Pro</td>
+                          <td class="py-4 px-6">White</td>
+                          <td class="py-4 px-6">Laptop PC</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Microsoft Surface Pro</td>
+                          <td class="py-4 px-6">White</td>
+                          <td class="py-4 px-6">Laptop PC</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Microsoft Surface Pro</td>
+                          <td class="py-4 px-6">White</td>
+                          <td class="py-4 px-6">Laptop PC</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Microsoft Surface Pro</td>
+                          <td class="py-4 px-6">White</td>
+                          <td class="py-4 px-6">Laptop PC</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Microsoft Surface Pro</td>
+                          <td class="py-4 px-6">White</td>
+                          <td class="py-4 px-6">Laptop PC</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Microsoft Surface Pro</td>
+                          <td class="py-4 px-6">White</td>
+                          <td class="py-4 px-6">Laptop PC</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Microsoft Surface Pro</td>
+                          <td class="py-4 px-6">White</td>
+                          <td class="py-4 px-6">Laptop PC</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Microsoft Surface Pro</td>
+                          <td class="py-4 px-6">White</td>
+                          <td class="py-4 px-6">Laptop PC</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#ffffff]">
+                          <td class="py-4 px-6">Apple MacBook Pro 17</td>
+                          <td class="py-4 px-6">Sliver</td>
+                          <td class="py-4 px-6">Laptop</td>
+                        </tr>
+                        <tr class="text-sm text-[#333] bg-[#f8f5f2]">
+                          <td class="py-4 px-6">Microsoft Surface Pro</td>
+                          <td class="py-4 px-6">White</td>
+                          <td class="py-4 px-6">Laptop PC</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              );
+            }
+
             return (
               <div
                 key={l.i}
